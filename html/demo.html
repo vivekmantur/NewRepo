@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GADIBECHO.COM</title>
+    <style>
+        /* General styles for the car background image */
+        .car-image {
+            position: absolute; /* Positioned behind the content */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh; /* Full viewport height */
+            z-index: -1; /* Ensure it stays behind other content */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url('car.jpg'); /* Set the car image */
+        }
+
+        /* Styles for the navbar container */
+        .topnav {
+            display: flex;
+            justify-content: space-between; /* Space between logo and links */
+            align-items: center; /* Center items vertically */
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+            color: #f1c40f; /* Yellow text color */
+            padding: 0 20px; /* Horizontal padding */
+            position: fixed; /* Fix navbar at the top */
+            width: 100%; /* Ensure full width */
+            top: 0;
+            left: 0; /* Ensure alignment to the left edge */
+            z-index: 1000; /* Ensure the navbar stays on top of other content */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Slight shadow for separation */
+            margin: 0; /* Remove margin to eliminate gaps */
+            height: 60px; /* Fixed height for the navbar */
+        }
+
+        /* Navbar logo styling */
+        .topnav .logo {
+            font-size: 18px; /* Font size for logo text */
+            color: #f1c40f; /* Yellow color for logo text */
+            text-transform: uppercase; /* Uppercase text */
+            font-weight: bold; /* Bold text */
+            margin: 0; /* Remove margin for alignment */
+        }
+
+        /* Navbar links container */
+        .topnav .links {
+            display: flex; /* Align links horizontally */
+            gap: 10px; /* Space between links */
+        }
+
+        /* Navbar links styling */
+        .topnav a {
+            color: #f1c40f; /* Yellow color for text */
+            text-align: center;
+            padding: 14px 20px; /* Adjusted padding for better spacing */
+            text-decoration: none;
+            font-size: 16px; /* Slightly smaller font size */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+        }
+
+        /* Hover effect */
+        .topnav a:hover {
+            background-color: #f1c40f; /* Yellow background on hover */
+            color: #000000; /* Black text color on hover */
+        }
+
+        /* Active link styling */
+        .topnav a.active {
+            background-color: #f1c40f; /* Highlight active link with a different yellow shade */
+            color: #000000; /* Black text color for active link */
+        }
+
+        /* Adjust spacing for specific links */
+        .topnav a.support {
+            margin-right: 20px; /* Adjust margin to move the "Support" link left */
+        }
+
+        /* Body styling */
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: right; /* Align text and elements to the right */
+            overflow: auto; /* Allow scrolling */
+        }
+
+        /* Introductory paragraph styling */
+        .intro {
+            margin: 60px 20px 20px 20px; /* Margin to ensure spacing from the navbar and edges */
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Light background for better readability */
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for slight elevation */
+        }
+
+        /* New section for additional content */
+        .additional-content, .additional-content1, .additional-content2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #ffffff; /* White background color for the section */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for slight elevation */
+        }
+
+        .additional-content .image-container, 
+        .additional-content1 .image-container,
+        .additional-content2 .image-container {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .additional-content .image-container img,
+        .additional-content1 .image-container img,
+        .additional-content2 .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .additional-content .text-content,
+        .additional-content1 .text-content,
+        .additional-content2 .text-content {
+            flex: 1;
+        }
+
+        .additional-content .text-content h2,
+        .additional-content1 .text-content h2,
+        .additional-content2 .text-content h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .additional-content .text-content p,
+        .additional-content1 .text-content p,
+        .additional-content2 .text-content p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* Responsive design for mobile screens */
+        @media screen and (max-width: 600px) {
+            .topnav {
+                flex-direction: column; /* Stack logo and links vertically */
+            }
+
+            .topnav .links {
+                flex-direction: column; /* Stack links vertically */
+                width: 100%; /* Full width for links container */
+            }
+
+            .topnav a {
+                padding: 10px; /* Adjust padding for mobile */
+            }
+
+            .additional-content, .additional-content1, .additional-content2 {
+                flex-direction: column; /* Stack image and text vertically on small screens */
+            }
+
+            .additional-content .image-container, 
+            .additional-content1 .image-container,
+            .additional-content2 .image-container {
+                padding-right: 0;
+                padding-bottom: 20px;
+            }
+            @keyframes blink {
+    0% {
+      background-image: url("https://static.vecteezy.com/system/resources/previews/026/702/777/original/illustration-of-car-for-sale-icon-in-dark-color-and-white-background-vector.jpg");
+    }
+    50% {
+      background-image: url("car.png");
+    }
+    100% {
+      background-image: url("car.png");
+    }
+  }
+        }
+    </style>
+</head>
+<body>
+    <div class="car-image"></div> <!-- Separate division for car image -->
+  
+    <div class="topnav">
+        <div class="logo">GAADIBECHO</div>
+        <div class="links">
+            <a class="active" href="home.html">Home</a>
+            <a href="register.html">Sell</a>
+            <a href="enquiry.html">Enquiry</a>
+            <a class="support" href="support.html">Support</a>
+        </div>
+    </div>
+
+    <div class="intro">
+        <h1>Welcome to GAADIBECHO.COM</h1>
+        <p>GAADIBECHO.COM is your go-to platform for selling and buying cars with ease. Our user-friendly website provides up-to-date information on car prices, offers a streamlined process for car sales, and delivers reliable support for all your car-related inquiries. Explore our services and get the best deals for your vehicle today!</p>
+    </div>
+
+    <div class="additional-content">
+        <div class="image-container">
+            <img src="car.png" alt="Example">
+        </div>
+        <div class="text-content">
+            <h2>Discover Our Services</h2>
+            <p>At GAADIBECHO.COM, we offer a range of services designed to make your car buying and selling experience seamless. From comprehensive price checks to expert advice and support, our team is here to ensure you get the most value out of your vehicle transactions.</p>
+        </div>
+    </div>
+
+    <div class="additional-content1">
+        <div class="image-container">
+            <img src="car.png" alt="Example">
+        </div>
+        <div class="text-content">
+            <h2>Discover Our Services</h2>
+            <p>At GAADIBECHO.COM, we offer a range of services designed to make your car buying and selling experience seamless. From comprehensive price checks to expert advice and support, our team is here to ensure you get the most value out of your vehicle transactions.</p>
+        </div>
+    </div>
+
+    <div class="additional-content2">
+        <div class="image-container">
+            <img src="car.png" alt="Example">
+        </div>
+        <div class="text-content">
+            <h2>Discover Our Services</h2>
+            <p>At GAADIBECHO.COM, we offer a range of services designed to make your car buying and selling experience seamless. From comprehensive price checks to expert advice and support, our team is here to ensure you get the most value out of your vehicle transactions.</p>
+        </div>
+    </div>
+</body>
+</html>
