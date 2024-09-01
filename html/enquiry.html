@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Form</title>
+    <style>
+        /* Styles for the video background */
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Styles for the navbar container */
+        .topnav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #ffffff;
+            padding: 0 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            height: 70px;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navbar links container */
+        .topnav .links {
+            display: flex;
+            gap: 15px;
+            margin-left: auto;
+        }
+
+        /* Navbar links styling */
+        .topnav a {
+            color: #ffffff;
+            text-align: center;
+            padding: 14px 40px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s, border-bottom 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+
+        /* Hover effect */
+        .topnav a:hover {
+            color: #f1c40f;
+            border-bottom: 2px solid #f1c40f;
+        }
+
+        /* Active link styling */
+        .topnav a.active {
+            color: #f1c40f;
+            border-bottom: 2px solid #f1c40f;
+        }
+
+        /* Card container styling */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: rgba(23, 22, 22, 0.9);
+            color: #ccc;
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 800px; /* Increased width */
+            width: 100%; /* Make it responsive */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .card form {
+            width: 100%; /* Ensure the form takes full width */
+        }
+
+        .card form label {
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .card form input[type="text"] {
+            width: 100%; /* Ensure the input fields take full width */
+            padding: 10px; /* Increased padding */
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .card form input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        .card form input[type="submit"] {
+            background-color: #f1c40f;
+            color: black;
+            padding: 12px 25px; /* Increased padding */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .card form input[type="submit"]:hover {
+            background-color: #333;
+            color: #f1c40f;
+        }
+
+        /* Responsive design for mobile screens */
+        @media screen and (max-width: 768px) {
+            .topnav {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .topnav .links {
+                flex-direction: column;
+                width: 100%;
+                margin-left: 0;
+            }
+
+            .topnav a {
+                padding: 12px;
+            }
+
+            .card {
+                max-width: 90%; /* Adjusted for smaller screens */
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background video -->
+    <video class="background-video" autoplay muted loop>
+        <source src="car3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Navbar -->
+    <div class="topnav">
+        <div class="logo">GAADIBECHO</div>
+        <div class="links">
+            <a href="home.html">Home</a>
+            <a href="register.html">Sell</a>
+            <a class="active" href="enquiry.html">Enquiry</a>
+            <a href="support.html">Support</a>
+        </div>
+    </div>
+
+    <!-- Form Card -->
+    <div class="container">
+        <div class="card">
+            <form>
+                <h2>Enquiry Details</h2>
+                
+                <label for="Custname">Customer Name:</label>
+                <input type="text" id="Custname" name="customername">
+                
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location">
+
+                <label for="vehicleType">Vehicle Type:</label>
+                <input type="checkbox" id="suv" name="vehicleType" value="suv">
+                <label for="suv">SUV</label>
+                <input type="checkbox" id="hatchback" name="vehicleType" value="hatchback">
+                <label for="hatchback">Hatchback</label>
+                <input type="checkbox" id="sedan" name="vehicleType" value="sedan">
+                <label for="sedan">Sedan</label>
+                
+                <input type="submit" value="Submit">
+            </form>
+            <button id="showNamesBtn">Show Registered Names</button>
+            <ul id="customerList"></ul>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('showNamesBtn').addEventListener('click', function() {
+            let customers = localStorage.getItem('customers');
+            if (customers) {
+                customers = JSON.parse(customers);
+                const customerList = document.getElementById('customerList');
+                customerList.innerHTML = '';
+                customers.forEach(customer => {
+                    const li = document.createElement('li');
+                    li.textContent = `${customer.firstName} ${customer.lastName}`;
+                    customerList.appendChild(li);
+                });
+            } else {
+                alert('No registered customers found.');
+            }
+        });
+    </script>
+</body>
+</html>
